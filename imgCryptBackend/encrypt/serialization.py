@@ -1,5 +1,11 @@
+# encrypt/serializers.py
 from rest_framework import serializers
 
-class ImageUploadSerializer(serializers.Serializer):
+# Serializer for encryption (image input)
+class ImageEncryptSerializer(serializers.Serializer):
     image = serializers.ImageField()
-    text = serializers.CharField(max_length=200)
+
+# Serializer for decryption (encrypted image + key input)
+class ImageDecryptSerializer(serializers.Serializer):
+    encrypted_image = serializers.CharField()  # This will receive base64 encoded string of the encrypted image
+    key = serializers.CharField(max_length=32)  # Key for decryption
